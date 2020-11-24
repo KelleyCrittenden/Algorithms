@@ -83,11 +83,6 @@ traverse() {
     }
 
     // Udemy Singly Linked List : Shift(remove) the Head
-    //no nodes, return null
-    // store current head in variable
-    // set the head to the next
-    // decrement length by 1
-    // return old head value
 
     shift() {
         // no nodes, return undefined
@@ -122,11 +117,10 @@ traverse() {
         return this;
     }
 
-    //Udemy  Singly Linked List : Get, grabbing a node by position, manually counting, linked 
+    // Udemy  Singly Linked List : Get, grabbing a node by position, manually counting, linked 
     // should accept an index
     // if it's less than zero or negative, not found
     // loop through until you find the specific index
-    //
 
     get(idx) {
         // if the index is less than zero, or a number higher than the length of the linked list, return null
@@ -145,6 +139,103 @@ traverse() {
 
     }
 
+    // Udemy Singly Linked List : Set, change/update the value of a node at a specific 
+    // accept a value and an index
+    set(idx, val) {
+        // use get function to find specific 
+        const theNode = this.get(idx)
+        // if node is not found, return 
+        if (!theNode) return false;
+        // if found update teh value and return true
+        theNode.val = val;
+        // return true if the node updated
+        return true;
+    }
+
+    // Udemy Singly Linked List : Insert, a node at a specific position
+    insert(idx, val) {
+        // if the index is < 0 or if index is > than the lenght, return 
+        if (idx < 0 || idx > this.length) return false
+        // if index is the same as the length, push a new node as the tail
+        if (idx === this.length) {
+            this.push(val)
+            // if the index is 0, unshift a new node to the start of the list
+        } else if (idx === 0) {
+            this.unshift(val);
+        } else {
+            // Otherwise use the get method to accsss the node at the index -1, grabbing the previous so we can set a new prev.next
+            const prev = this.get(idx - 1);
+            // instantiating the new node
+            let newNode = new Node(val);
+            // Set next node to be the next on the old node, name the old node so that we can keep what used to come after the previous
+            indexNode = prev.next
+            newNode.next = indexNode;
+            // Set the next property on that prior node to be the new node that we just added
+            prev.next = newNode;
+            // increment the length to include the new node
+            this.length++;
+        }
+        // returning true if it did add a node
+        return true;
+    }
+
+    // Udemy Singly Linked List : Remove, a node at a specific position
+    remove(idx) {
+        // If index is less than zero or greater than the length, return undefined
+        if (idx < 0 || idx >= this.length) return null;
+        // If index is same as length - 1, pop
+        if (idx === this.length - 1) return this.pop();
+        // If index is zero, shift
+        if (idx === 0) return this.shift();
+        // Otherwise, use get to find index - 1
+        const prev = this.get(idx - 1);
+        // Set the next property to be the node after the indexed node
+        const removedNode = prev.next;
+        prev.next = removedNode.next;
+        // Decrement length
+        this.length--;
+        // Return the value of the removed node
+        return removedNode.val;
+    }
+
+
+    // Reverse - reverse the list in place
+    reverse() {
+        // Reassign the head -- it is now the tail
+        this.tail = this.head;
+        // SLIDING WINDOW
+        // Create a current variable
+        let current = this.tail;
+        // Create a next variable
+        let next;
+        // Create a prev variable -- set to null so we can connect the new tail to it within the while loop
+        let prev = null;
+        // Loop
+        while (current) {
+
+            // Reverse the ".next" connections
+            next = current.next;
+            current.next = prev;
+
+            // Move the window
+            prev = current;
+            current = next;
+
+        }
+        // Reassign the head property
+        this.head = prev;
+        return this;
+    }
+
+    // Print - display the linked list in the console
+    print() {
+        let current = this.head;
+        console.log(current.val)
+        while (current.next) {
+            current = current.next;
+            console.log(" --> " + current.val)
+        }
+    }
 
 
 }
@@ -166,4 +257,15 @@ list.push("POP")
 // list.unshift("Morning");
 // console.log(list);
 
-console.log(list.get(1))
+//console.log(list.get(1))
+
+//console.log(list);
+
+// console.log(list.insert(1, "Inserted"));
+// console.log(list);
+
+// console.log(list.remove(3))
+// console.log(list)
+
+console.log(list.reverse());
+list.print();
