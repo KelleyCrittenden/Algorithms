@@ -41,7 +41,7 @@ validAnagram("qwerty", "geywrt") // true
 validAnagram("texttwisttime", "timetwisttext") // true
 
 
-// SORTED array with muliple pointers, comparing two to see if the sum is 0 (negative plus an equal positive)
+// SORTED array with multiple pointers, comparing two to see if the sum is 0 (negative plus an equal positive)
 // Implement a function that accepts a sorted array and counts the unique values in the array
 // There can be negative numbers in the array but it will always be sorted
 

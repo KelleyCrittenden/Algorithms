@@ -32,9 +32,11 @@ const sameFrequency = (num1, num2) => {
 
     // using the taco "key" to compare the number frequencies in each variable, if they don't match, return false
     for (let key in numFreq1) {
+        // if that number isn't in the second string, there is no reason to continue, return false
         if (!key in numFreq2) {
             return false;
         }
+        // if that number's frequency doesn't match the number's frequency in the second string, return false
         if (numFreq1[key] !== numFreq2[key]) {
             return false;
         }
