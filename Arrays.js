@@ -16,4 +16,5 @@ var removeDuplicates = function (nums) {
 };
 const answer = removeDuplicates(numbers);
 
-console.log("Remove Duplicates Array Length: ", numbers.length)
+//console.log("Remove Duplicates Array Length: ", numbers.length)
+

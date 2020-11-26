@@ -199,7 +199,7 @@ traverse() {
     }
 
 
-    // Reverse - reverse the list in place
+    // Udemy Singly Linked List : Reverse, reverse the list in place
     reverse() {
         // Reassign the head -- it is now the tail
         this.tail = this.head;
