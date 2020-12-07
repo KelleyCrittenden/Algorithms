@@ -4,7 +4,7 @@
 // largest value bubbles to the top
 
 // easy way to use javascript sort method... which on it's own, without this function telling it what to do, doesn't work well
-function numberComparre(num1, num2) {
+function numberCompare(num1, num2) {
     return num2 - num1;
 }
 

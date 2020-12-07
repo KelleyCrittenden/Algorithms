@@ -1,3 +1,5 @@
+// Udemy - Naive String Search
+
 // Count the number of times a smaller string appears in a longer string
 // Loop over the longer string
 // longer string, pattern variables
@@ -8,6 +10,7 @@
 // return the count
 
 function searchNaiveString(string, pattern) {
+    // setting variable to hold the count of how many times the pattern is seen within the string
     var counter = 0;
     // looping through the bigger string
     for (var i = 0; i < string.length; i++) {
@@ -18,6 +21,7 @@ function searchNaiveString(string, pattern) {
             if (pattern[j] !== string[i + j]) break;
             // we get to the last letter of the pattern, then we know that we finished and it went through and matched all of the pattern
             // length is greater than the index b/c the index starts at 0 so we subtract one
+            // incrementring counter
             if (j === pattern.length - 1) counter++;
         }
     }
