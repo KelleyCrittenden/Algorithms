@@ -14,15 +14,11 @@ function searchNaiveString(string, pattern) {
         // looping through the pattern, while the index stays the same in the string
         for (var j = 0; j < pattern.length; j++) {
             // looking ahead by adding j + i to go the next index in the string, looking for matches
-            if (pattern[j] !== string[i + j]) {
-                // if they don't match break out of the pattern and start over again, resetting J, I moves on
-                break;
-            }
+            // if they don't match break out of the pattern and start over again, resetting J, I moves on
+            if (pattern[j] !== string[i + j]) break;
             // we get to the last letter of the pattern, then we know that we finished and it went through and matched all of the pattern
-            // length is greater than the index b/c the index starts at 1 so we subtract one
-            if (j === pattern.length - 1) {
-                counter++;
-            }
+            // length is greater than the index b/c the index starts at 0 so we subtract one
+            if (j === pattern.length - 1) counter++;
         }
     }
     return counter;
