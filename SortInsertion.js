@@ -1,4 +1,4 @@
-// Udemy - Insertion Sort
+// Udemy - Insertion Sort, works well when data is being sent online, live, inserting items one at a time
 
 // Builds up the the sort by gradually creating larger left sided portion which is always sorted
 // inserting the element into the correct spot
