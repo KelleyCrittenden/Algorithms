@@ -44,14 +44,18 @@ function mostDigits(nums) {
 function radixSort(numbers) {
     // how many times we have to loop
     let maxDigitCount = mostDigits(numbers);
+    // k is set to how many times we are going to need to loop
     for (let k = 0; k < maxDigitCount; k++) {
-        //making buckets
+        //making buckets with numbers 0-9
         let digitBuckets = Array.from({ length: 10 }, () => [])
-        // looping over every number
+        // looping over our array of numbers
         for (let i = 0; i < numbers.length; i++) {
+            // grabbing the single digit to look at
             let digit = getDigit(numbers[i], k)
+            // pushing numbers into buckets with their corresponding buckets
             digitBuckets[digit].push(numbers[i]);
         }
+        // replacing the array with the array we pulled out of the bucket, numbers in order from where they were placed in buckets
         numbers = [].concat(...digitBuckets);
     }
     return numbers;
