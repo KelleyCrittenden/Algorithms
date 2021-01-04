@@ -18,14 +18,9 @@ class DoublyLinkedList {
         this.tail = null;
         this.length = 0;
     }
-    // PUSH, method to add a new node to the end of the doubly linked list
-    // create a new node with the value to pass to the function
-    // if the head property is null set the head and tail to the newly created node
-    // if not, set the next property on the tail to be that node
-    // set the previous property on the newly created node to be the old tail
-    // set the tail to the be the newly created node
-    // increment the length
-    // return the doubly linked list
+
+
+    // PUSH: method to add a new node to the end of the doubly linked list
 
     push(val) {
         // creating new node
@@ -42,17 +37,49 @@ class DoublyLinkedList {
             // setting tail to be the new node
             this.tail = newNode;
         }
+        // incrementing length to include new node
         this.length++
+        // returning entire list
         return this;
+    }
+
+    // POP: removing a node from the end of the Doubly Linked List
+    pop() {
+        if (!this.head) return undefined;
+        // store the current tail in a variable to return later
+        let currentTail = this.tail;
+        // if the length is 1 set the head and tail to be null
+        if (this.length === 1) {
+            this.head = null;
+            this.tail = null;
+            // update the tail to be the previous node
+        } else {
+            // set the new tail next to be the prevous of the current tail
+            this.tail = currentTail.prev;
+            // set the tail next to be null
+            this.tail.next = null;
+            // taking old tail and set prev to be null
+            currentTail.prev = null;
+        }
+        //decrement the length to remove the last node
+        this.length--;
+        // return the value of the removed node
+        return currentTail;
+
     }
 }
 
+
+
+
 var list = new DoublyLinkedList()
-list.push(5)
-list.push(10)
-list.push(25)
-list.push(50)
-list.push(100)
+list.push(5);
+list.push(10);
+list.push(25);
+list.push(50);
+list.push(100);
+
+console.log(list.pop())
 
 
 console.log(list)
