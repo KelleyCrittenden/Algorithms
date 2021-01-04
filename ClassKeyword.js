@@ -6,18 +6,20 @@
 class Student {
     // method to create new objects must be called constructor
     constructor(firstName, lastName, year) {
+        // "this" refers to the object created from that class, an instance
         this.firstName = firstName;
         this.lastName = lastName;
         this.grade = year;
         //setting default to 0
         this.tardies = 0;
-        //creating empty array
+        //creating empty array to hold all of our scores
         this.scores = [];
     }
-    // method individual instance, not on the class level
+    // Instance Method: method individual instance, not on the class level
     fullName() {
         return `Your full name is ${this.firstName} ${this.lastName}`
     }
+    // Instance Method
     markLate() {
         //updating our count
         this.tardies += 1;
@@ -27,11 +29,13 @@ class Student {
         }
         return `${this.firstName} ${this.lastName} has been late ${this.tardies} times`
     }
+    // Instance Method
     addScore(score) {
         // adding a score to end of the array
         this.scores.push(score);
         return this.scores
     }
+    // Instance Method
     calculateAverage() {
         // using reduce to calculate 
         // storing sum in temprary variable
