@@ -67,6 +67,31 @@ class DoublyLinkedList {
         return currentTail;
 
     }
+
+    // SHIFT: removing a node from the beginning of the doubly linked list
+
+    shift() {
+        // if there is no head, return undefined
+        if (!this.head) return undefined;
+        // create varaible to hold current head
+        let currentHead = this.head;
+        // if there is one, then set tail and head to null
+        if (this.length === 1) {
+            this.head = null;
+            this.tail = null;
+        } else {
+            //update the head to the next of the old head
+            this.head = currentHead.next
+            // set the heads previous to be null, severing connection
+            this.head.prev = null;
+            // set the current head next to null, severing connection
+            currentHead.next = null;
+        }
+        //decrementing lenght to accound for removed head
+        this.length--;
+        //returning value of removed head
+        return currentHead;
+    }
 }
 
 
@@ -79,7 +104,8 @@ list.push(25);
 list.push(50);
 list.push(100);
 
-console.log(list.pop())
+//console.log(list.pop())
+console.log(list.shift())
 
 
 console.log(list)
