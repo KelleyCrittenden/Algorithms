@@ -92,6 +92,29 @@ class DoublyLinkedList {
         //returning value of removed head
         return currentHead;
     }
+
+    // Unshift: adding a new node to the beginning of the doubly linked list
+
+    unshift(val) {
+        //Create a new node with the value passed to the function
+        var newHead = new Node(val);
+        //If the length is 0, set the head and tail to the new node
+        if (!this.head) {
+            this.head = newHead;
+            this.tail = newHead;
+        } else {
+            // Else, set the prev property on the head of the list to be the new node
+            this.head.prev = newHead;
+            // set the next property on the new node to be the old head
+            this.head.next = this.head;
+            // Update the head to be the new node
+            this.head = newHead;
+        }
+        //Increment the lenght to account for new head
+        this.length++;
+        //Return list
+        return this;
+    }
 }
 
 
@@ -105,7 +128,8 @@ list.push(50);
 list.push(100);
 
 //console.log(list.pop())
-console.log(list.shift())
+//console.log(list.shift())
+console.log(list.unshift(1))
 
 
 console.log(list)
