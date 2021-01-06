@@ -105,7 +105,7 @@ class DoublyLinkedList {
         } else {
             // Else, set the prev property on the head of the list to be the new node
             this.head.prev = newHead;
-            // set the next property on the new node to be the old head
+            // Set the next property on the new node to be the old head
             this.head.next = this.head;
             // Update the head to be the new node
             this.head = newHead;
@@ -115,6 +115,42 @@ class DoublyLinkedList {
         //Return list
         return this;
     }
+
+    // Get: accessing a node by it's position in a doubly linked list
+
+    get(index) {
+        // If the index is less than 0 or greater or equal to the length, return null
+        if (index < 0 || index >= this.length) return null;
+        // If the index is less than the lenghth divided by 2, start at the beginning
+        if (index <= this.length / 2) {
+            // Creating variable to hold count
+            var count = 0;
+            // Setting the head
+            var current = this.head;
+            // As long as count isn't equal to the index
+            while (count != index) {
+                // Traversing the list
+                current = current.next;
+                // Incrementing count
+                count++;
+            }
+            // Index must be closer to tail, start there
+        } else {
+            // Setting current to the length of our list -1
+            var count = this.length - 1;
+            // Setting current to tail
+            var current = this.tail;
+            // As long as count isn't equal to the index
+            while (count != index) {
+                // Working backwards
+                current = current.prev;
+                // Decrementing the count
+                count--;
+            }
+
+        }
+        return current;
+    }
 }
 
 
@@ -123,13 +159,16 @@ class DoublyLinkedList {
 var list = new DoublyLinkedList()
 list.push(5);
 list.push(10);
+list.push(20);
 list.push(25);
 list.push(50);
+list.push(75);
 list.push(100);
 
-//console.log(list.pop())
-//console.log(list.shift())
-console.log(list.unshift(1))
+// console.log(list.pop())
+// console.log(list.shift())
+// console.log(list.unshift(1))
+console.log(list.get(3))
 
 
-console.log(list)
+//console.log(list)
