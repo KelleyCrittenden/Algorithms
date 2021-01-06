@@ -20,7 +20,7 @@ class DoublyLinkedList {
     }
 
 
-    // PUSH: method to add a new node to the end of the doubly linked list
+    // PUSH: method to add a new node to the end
 
     push(val) {
         // creating new node
@@ -43,7 +43,7 @@ class DoublyLinkedList {
         return this;
     }
 
-    // POP: removing a node from the end of the Doubly Linked List
+    // POP: removing a node from the end
     pop() {
         if (!this.head) return undefined;
         // store the current tail in a variable to return later
@@ -68,7 +68,7 @@ class DoublyLinkedList {
 
     }
 
-    // SHIFT: removing a node from the beginning of the doubly linked list
+    // SHIFT: removing a node from the beginning
 
     shift() {
         // if there is no head, return undefined
@@ -93,7 +93,7 @@ class DoublyLinkedList {
         return currentHead;
     }
 
-    // Unshift: adding a new node to the beginning of the doubly linked list
+    // Unshift: adding a new node to the beginning
 
     unshift(val) {
         //Create a new node with the value passed to the function
@@ -116,7 +116,7 @@ class DoublyLinkedList {
         return this;
     }
 
-    // Get: accessing a node by it's position in a doubly linked list
+    // Get: accessing a node by its position
 
     get(index) {
         // If the index is less than 0 or greater or equal to the length, return null
