@@ -174,16 +174,21 @@ class DoublyLinkedList {
         // Check if it's a valid index
         if (index < 0 || index > this.length) return false;
         // If the index is 0 use unshift to add as head
-        if (index === 0) return this.unshift(value);
+        // Double bang turns it into a boolean so it displays true or false
+        if (index === 0) return !!this.unshift(value);
         // If the index is the same as the length, push to be new tail
-        if (index === this.length) return this.push(value);
+        // Double bang turns it into a boolean so it displays true or false
+        if (index === this.length) return !!this.push(value);
+
         else {
-            // Set previous variable to the node right before the new node index so we can shift it 
+            // Set beforeNode variable to the node right before the new node index so we can shift it
+            // Using "get" method to find node 
             const beforeNode = this.get(index - 1);
             // Set next variable to the node right after the index so we can shift it
             const afterNode = beforeNode.next;
             // Set newNode variable to the value of the node to be passed in
             var newNode = new Node(value);
+
             // Setting the previous node to have the next value of the newNode
             beforeNode.next = newNode;
             // Setting the new node to have the before node set as the prev of our newNode
@@ -197,8 +202,35 @@ class DoublyLinkedList {
             return true;
 
         }
+    }
 
-        // otherwise use get to find the node right before the index
+    // Remove: Removing a node by a certain position
+
+    remove(index) {
+        // If the index is invalid, return false
+        if (index < 0 || index >= this.length) return undefined;
+        // If the index is 0, shift off the very beginning
+        if (index === 0) return !!this.shift(index)
+        // If the index is the same as length -1, pop off the end
+        if (index === this.length) return !!this.pop(index)
+
+        // Use the get method to retrieve the item to be removed
+        const removedNode = this.get(index)
+        // Setting the prev node to a variable that is one less than our index
+        const beforeNode = removedNode.prev;
+        // Setting the next node to a variable
+        const afterNode = removedNode.next;
+
+        // Update the next and previous properties to remove the found node from the list
+        beforeNode.next = afterNode;
+        afterNode.prev = beforeNode;
+        // Severing ties to removed node
+        removedNode.next = null;
+        removedNode.prev = null;
+
+        // Decrement Length to remove node
+        this.length--;
+        return removedNode;
     }
 }
 
@@ -219,9 +251,8 @@ list.push(100);
 // console.log(list.get(3))
 // console.log(list.set(-1, 6))
 // console.log(list.set(0, 6))
-
-console.log(list.insert(1, 40))
-
+// console.log(list.insert(1, 40))
+console.log(list.remove(1))
 
 
 console.log(list)
