@@ -68,7 +68,7 @@ traverse() {
             prev = current;
             current = current.next;
         }
-        // setting the 
+        // setting the tail 
         this.tail = newTail;
         //severing the connection to the old tail
         this.tail.next = null;
@@ -154,7 +154,7 @@ traverse() {
 
     // Udemy Singly Linked List : Insert, a node at a specific position
     insert(idx, val) {
-        // if the index is < 0 or if index is > than the lenght, return 
+        // if the index is < 0 or if index is > than the length, return false
         if (idx < 0 || idx > this.length) return false
         // if index is the same as the length, push a new node as the tail
         if (idx === this.length) {
