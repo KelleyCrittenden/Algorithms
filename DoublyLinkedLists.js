@@ -151,8 +151,23 @@ class DoublyLinkedList {
         }
         return current;
     }
-}
 
+    // Set: Replacing the value of a node
+
+    set(index, value) {
+        // Create a variable which is the result of the "get" method at the index passed to the function
+        const foundNode = this.get(index)
+        // If the "get" method returns a valid node
+        if (foundNode != null) {
+            // Update the value of the node with the value passed in
+            foundNode.value = value;
+            // Return True
+            return true;
+        }
+        // Otherwise, return false
+        return false;
+    }
+}
 
 
 
@@ -168,7 +183,10 @@ list.push(100);
 // console.log(list.pop())
 // console.log(list.shift())
 // console.log(list.unshift(1))
-console.log(list.get(3))
+// console.log(list.get(3))
+// console.log(list.set(-1, 6))
+// console.log(list.set(0, 6))
 
 
-//console.log(list)
+
+console.log(list)
