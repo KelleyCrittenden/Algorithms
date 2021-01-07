@@ -44,6 +44,7 @@ class DoublyLinkedList {
     }
 
     // POP: removing a node from the end
+
     pop() {
         if (!this.head) return undefined;
         // store the current tail in a variable to return later
@@ -232,6 +233,51 @@ class DoublyLinkedList {
         this.length--;
         return removedNode;
     }
+
+    // Reverse: reverse this doubly linked list
+
+    reverse() {
+        // Reassign the head -- it is now the tail
+        this.tail = this.head;
+        // SLIDING WINDOW
+        // Create a current variable
+        let current = this.tail;
+        // Create a next variable
+        let next;
+        // Create a prev variable -- set to null so we can connect the new tail to it within the while loop
+        let prev = null;
+        // Loop
+        while (current) {
+
+            // Reverse the ".next" connections
+            next = current.next;
+            current.next = prev;
+
+            // Reverse the ".prev" connections
+            prev = current.prev;
+            current.prev = next;
+
+            // Move the window
+            prev = current;
+            current = next;
+
+        }
+        // Reassign the head property
+        this.head = prev;
+
+        return this;
+
+    }
+
+    // Print - display the doubly linked list in the console
+    print() {
+        let current = this.head;
+        console.log(current.val)
+        while (current.next) {
+            current = current.next;
+            console.log(" --> " + current.val)
+        }
+    }
 }
 
 
@@ -252,7 +298,8 @@ list.push(100);
 // console.log(list.set(-1, 6))
 // console.log(list.set(0, 6))
 // console.log(list.insert(1, 40))
-console.log(list.remove(1))
+// console.log(list.remove(1))
+console.log(list.reverse())
 
 
-console.log(list)
+list.print();
